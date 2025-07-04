@@ -48,14 +48,14 @@ internal class SignOutManagerImpl(
     ) {
         activity.supportFragmentManager.beginTransaction()
             .add(loginFragment, SignOutFragment.LOGOUT_FRAGMENT_TAG)
-            .commit()
+            .commitAllowingStateLoss()
     }
 
     private fun removeFragmentIfAttached(activity: FragmentActivity) {
         activity.supportFragmentManager.findFragmentByTag(SignOutFragment.LOGOUT_FRAGMENT_TAG)?.let {
             activity.supportFragmentManager.beginTransaction()
                 .remove(it)
-                .commit()
+                .commitAllowingStateLoss()
         }
     }
 
