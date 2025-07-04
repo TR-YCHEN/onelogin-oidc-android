@@ -23,6 +23,7 @@ import javax.crypto.*
 import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
 import javax.security.auth.x500.X500Principal
+import androidx.core.content.edit
 
 /**
  * Created by trish.huynh@onelogin.com on 11/26/2019.
@@ -40,12 +41,12 @@ class OneLoginEncryptionManager(
             sharedPreferences =
                 context.getSharedPreferences(ONELOGIN_SHARED_PREFERENCES, MODE_PRIVATE)
             if (!containsAlias()) {
-                sharedPreferences.edit().clear().apply()
+                sharedPreferences.edit { clear() }
                 generateKeys()
             } else {
                 if (!verifyKeys()) {
                     removeKeys()
-                    sharedPreferences.edit().clear().apply()
+                    sharedPreferences.edit { clear() }
                     generateKeys()
                 }
             }
