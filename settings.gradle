@@ -1,4 +1,10 @@
-rootProject.name='OIDC SDK Demo'
-include ':app'
+pluginManagement {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'https://jitpack.io' }
+        gradlePluginPortal()
+    }
+}
+
+rootProject.name='OIDC SDK'
 include ':oneloginoidc'
-include ':appjava'

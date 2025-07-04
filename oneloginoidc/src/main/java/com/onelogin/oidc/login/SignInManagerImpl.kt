@@ -71,7 +71,7 @@ internal class SignInManagerImpl(
         activity.supportFragmentManager.findFragmentByTag(SignInFragment.LOGIN_FRAGMENT_TAG)?.let {
             activity.supportFragmentManager.beginTransaction()
                 .remove(it)
-                .commit()
+                .commitAllowingStateLoss()
         }
     }
 
@@ -81,7 +81,7 @@ internal class SignInManagerImpl(
     ) {
         activity.supportFragmentManager.beginTransaction()
             .add(loginFragment, SignInFragment.LOGIN_FRAGMENT_TAG)
-            .commit()
+            .commitAllowingStateLoss()
     }
 
     private fun getAuthorizationRequest(
